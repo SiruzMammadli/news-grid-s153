@@ -1,0 +1,178 @@
+:root {
+    --primary-orange: 251 72 52;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+}
+
+body {
+    min-height: 100dvh;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+}
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+input, button,label {
+    all: unset;
+
+    &:not(input) {
+        cursor: pointer;
+    }
+}
+
+.flex { display: flex; align-items: center; }
+.justify-between { justify-content: space-between; }
+
+.container {
+    width: clamp(300px, 100%, 1170px);
+    margin-inline: auto;
+
+    > nav {
+        background-color: #494949;
+        .search{
+            overflow: hidden;
+
+            .search-bar{
+                 translate: calc(100% + 60px) 0; 
+                 transition: 400ms translate ease-in-out;
+            }
+             &:has(input[type=checkbox]:checked){
+              .search-bar{
+                
+                translate: 0 0;
+              }
+             }
+            > label{
+             z-index: 3;
+                background-color: #333333;
+                display: inline-flex;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition-duration: 300ms ;
+            transition-property:   background-color  ;
+            aspect-ratio: 1/1;
+             &:hover{
+                background-color: rgb(var(--primary-orange));
+             }
+             >input{
+                display: none;
+             }
+            }
+        }
+        > ul {
+            > li {
+
+                > a {
+                    display: inline-flex;
+                    height: 60px;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    padding-inline: 16px;
+                    
+                    &.home {
+                        aspect-ratio: 1/1;
+                        background-color: rgb(var(--primary-orange));
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    .blogs {
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px;
+
+        .blog {
+            height: 100%;
+            &:nth-of-type(1) {
+                grid-row: span 2;
+            }
+            &:nth-of-type(3) {
+                grid-row-start: 2;
+                grid-column-start: 2;
+            }
+            &:nth-of-type(4) {
+                grid-row: span 2;
+                overflow: hidden;
+
+                > ul {
+                    height: 100%;
+                    overflow-y: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 4px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background-color: #4C4D4E;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #FB4834;
+                    }
+
+                    > li {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        row-gap: 8px;
+                        background-color: #313234;
+                        padding: 16px;
+                        color: white;
+                        transition-duration: 400ms;
+                        transition-property: background-color;
+
+                        &:hover {
+                            background-color: #262729;
+                        }
+
+                        > span {
+                            background-color: #333;
+                            color: #ff9900;
+                            font-size: 10px;
+                            font-weight: 500;
+                            padding: 3px 5px;
+                            border-radius: 4px;
+                        }
+
+                        > a {
+                            font-weight: 500;
+                        }
+
+                        > div {
+                            font-size: 11px;
+                            color: rgb(255 255 255 / 50%);
+                            margin-top: 5px;
+
+                            > span:first-of-type {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
